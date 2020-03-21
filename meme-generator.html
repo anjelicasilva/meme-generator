@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+
+    <!-- Import CSS file -->
+    <link rel="stylesheet" href="meme-generator.css">
+</head>
+<body>
+
+    <p>
+        <textarea id="top-text"></textarea>
+    </p>
+    <p>
+        <textarea id="bottom-text"></textarea>
+    </p>
+    <p>
+        <input type="file" id="image-input" accept="image/*">
+    </p>
+    <p>
+        <button id="generate-meme-btn">Generate!</button>
+    </p>
+    <p>
+        <canvas id="meme-canvas"></canvas>
+    </p>
+
+    <!-- Import Javascript file -->
+    <script src="meme-generator.js"></script>
+</body>
+</html>
