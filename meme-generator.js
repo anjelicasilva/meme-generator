@@ -21,7 +21,7 @@ function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
     //Top text font size
     fontSize = canvas.width * topTextSize;
     ctx.font = fontSize + 'px Impact';
-    ctx.lineWidth = fontSize / 15;
+    ctx.lineWidth = fontSize / 20;
 
 
     // Draw top text 
@@ -34,7 +34,7 @@ function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
     //Bottom text font size
     fontSize = canvas.width * bottomTextSize;
     ctx.font = fontSize + 'px Impact';
-    ctx.lineWidth = fontSize / 15;
+    ctx.lineWidth = fontSize / 20;
     
      // Draw bottom text 
      // Must reverse array, subtracting each index will cause it to start writing from the bottom
