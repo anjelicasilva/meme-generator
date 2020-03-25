@@ -1,7 +1,10 @@
-let topTextInput, bottomTextInput, imageInput, generateMemeBtn, canvas, ctx;
+let topTextInput, bottomTextInput,topTextSizeInput, bottomTextSizeInput, imageInput, generateMemeBtn, canvas, ctx;
 
 // Create a function that generates a meme
-function generateMeme (img, topText, bottomText) {
+function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
+    // declare fontsize variable here
+    let fontSize;
+
     canvas.width = img.width;
     canvas.height = img.height;
 
@@ -10,12 +13,16 @@ function generateMeme (img, topText, bottomText) {
     // Draw the image
     ctx.drawImage(img, 0, 0);
 
-    let fontSize = canvas.width / 15;
-    ctx.font = fontSize + 'px Impact';
+    
     ctx.fillStyle = 'white';
     ctx.strokeStyle = 'black';
-    ctx.lineWidth = fontSize / 15;
     ctx.textAlign = 'center';
+
+    //Top text font size
+    fontSize = canvas.width * topTextSize;
+    ctx.font = fontSize + 'px Impact';
+    ctx.lineWidth = fontSize / 15;
+
 
     // Draw top text 
     ctx.textBaseline = 'top';
@@ -23,6 +30,11 @@ function generateMeme (img, topText, bottomText) {
         ctx.fillText(txt, canvas.width / 2, idx * fontSize, canvas.width);
         ctx.strokeText(txt, canvas.width / 2, idx * fontSize, canvas.width);
     });
+
+    //Bottom text font size
+    fontSize = canvas.width * bottomTextSize;
+    ctx.font = fontSize + 'px Impact';
+    ctx.lineWidth = fontSize / 15;
     
      // Draw bottom text 
      // Must reverse array, subtracting each index will cause it to start writing from the bottom
@@ -38,6 +50,8 @@ function generateMeme (img, topText, bottomText) {
 function init () {
     topTextInput = document.getElementById("top-text");
     bottomTextInput = document.getElementById("bottom-text")
+    topTextSizeInput = document.getElementById("top-text-size-input");
+    bottomTextSizeInput = document.getElementById("bottom-text-size-input")
     imageInput = document.getElementById("image-input");
     generateMemeBtn = document.getElementById("generate-meme-btn");
     canvas = document.getElementById("meme-canvas");
@@ -57,7 +71,7 @@ function init () {
         reader.onload = function () {
             let img = new Image;
             img.src = reader.result;
-            generateMeme(img, topTextInput.value, bottomTextInput.value);
+            generateMeme(img, topTextInput.value, bottomTextInput.value, topTextSizeInput.value, bottomTextSizeInput.value);
         };
         reader.readAsDataURL(imageInput.files[0]);
     });
